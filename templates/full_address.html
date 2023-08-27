@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mainpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+<div>
+    <header>
+        <div class="headerPic">
+            <h1>Город адресов</h1>
+        </div>
+    </header>
+    <form method="POST" action="" class="form">
+             {% csrf_token %}
+            <label class="text-field_label" for="from">Введите адрес:</label>
+            <div >{{ form.address}}</div>
+            <button class="submit-button" type="submit" value="Submit">Проверить</button>
+    </form>
+{#    <a href="">#}
+{#    </a>#}
+    {% if result %}
+        {% for address,id in result.items %}
+            <div class = "list">
+            <ul>
+                <li> {{ address }} </li>
+                <li>{{ id }}</li>
+            </ul>
+            </div>
+            <div class="line"></div>
+        {% endfor %}
+    {% endif %}
+
+    <section>
+         <div class = "citation"> <p>"Адреса могут меняться, но значение места, к которому они относятся, будет всегда оставаться в сердце." (с)</p> </div>
+        </section>
+	</div>
+<footer><p>Кейс №1</p>
+<p>Хакатон Цифровой прорыв</p>
+<p>Команда "Филадельфия"</p></footer>
+</body>
+</html>
